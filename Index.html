@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЕжеКредит — Самый выгодный кредит*</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --yellow: #FFD600;
+            --green: #00C853;
+            --blue: #2979FF;
+            --dark: #1a1a2e;
+            --light: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+            transition: all 0.3s;
+        }
+
+        /* ===== ХАОС РЕЖИМ ===== */
+        body.chaos-mode {
+            animation: chaosBackground 0.3s infinite;
+        }
+
+        @keyframes chaosBackground {
+            0% { background: #ff0000; }
+            14% { background: #ff8800; }
+            28% { background: #ffff00; }
+            42% { background: #00ff00; }
+            57% { background: #0088ff; }
+            71% { background: #8800ff; }
+            85% { background: #ff00ff; }
+            100% { background: #ff0000; }
+        }
+
+        body.chaos-mode * {
+            animation-duration: 0.1s !important;
+        }
+
+        body.chaos-mode .card {
+            animation: chaosCard 0.2s infinite alternate;
+        }
+
+        @keyframes chaosCard {
+            0% { transform: rotate(-15deg) scale(1.1); }
+            50% { transform: rotate(15deg) scale(0.9); }
+            100% { transform: rotate(-10deg) scale(1.2); }
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, var(--blue) 0%, #1565C0 100%);
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 48px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+            animation: logoSpin 3s ease-in-out infinite;
+        }
+
+        @keyframes logoSpin {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(5deg) scale(1.1); }
+        }
+
+        .logo-text {
+            font-size: 32px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .logo-text span {
+            color: var(--yellow);
+        }
+
+        .header-badge {
+            background: var(--yellow);
+            color: var(--dark);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(255,214,0,0.5); }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, #1565C0 0%, #0D47A1 50%, #002171 100%);
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,214,0,0.1) 0%, transparent 50%);
+            animation: heroGlow 5s ease-in-out infinite;
+        }
+
+        @keyframes heroGlow {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(5%, 5%); }
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 .highlight {
+            color: var(--yellow);
+            text-shadow: 0 0 30px rgba(255,214,0,0.5);
+        }
+
+        .hero p {
+            font-size: 22px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 30px 40px;
+            min-width: 200px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--yellow);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            margin-top: 5px;
+        }
+
+        /* ===== КАРТОЧКИ ===== */
+        .cards-section {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 50px;
+            color: var(--dark);
+        }
+
+        .section-title span {
+            color: var(--blue);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+        }
+
+        .card:nth-child(1)::before { background: var(--yellow); }
+        .card:nth-child(2)::before { background: var(--green); }
+        .card:nth-child(3)::before { background: var(--blue); }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .card-badge {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .card:nth-child(1) .card-badge { background: #FFF9C4; color: #F57F17; }
+        .card:nth-child(2) .card-badge { background: #C8E6C9; color: #2E7D32; }
+        .card:nth-child(3) .card-badge { background: #BBDEFB; color: #1565C0; }
+
+        /* ===== ПРЕИМУЩЕСТВА ===== */
+        .advantages {
+            background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
+            padding: 80px 40px;
+        }
+
+        .adv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .adv-item {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .adv-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .adv-item h4 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .adv-item p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* ===== КНОПКА ВЗЯТЬ КРЕДИТ ===== */
+        .cta-section {
+            padding: 80px 40px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--dark) 0%, #16213e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '🦔';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 40px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .cta-section h2 span {
+            color: var(--yellow);
+        }
+
+        .cta-section p {
+            color: rgba(255,255,255,0.6);
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 22px 60px;
+            background: linear-gradient(135deg, var(--yellow) 0%, #FFC400 100%);
+            color: var(--dark);
+            font-size: 22px;
+            font-weight: 900;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 40px rgba(255,214,0,0.4);
+            animation: ctaPulse 2s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(255,214,0,0.6);
+        }
+
+        @keyframes ctaPulse {
+            0%, 100% { box-shadow: 0 10px 40px rgba(255,214,0,0.4); }
+            50% { box-shadow: 0 10px 60px rgba(255,214,0,0.7); }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0a0a15;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .footer-text {
+            color: rgba(255,255,255,0.3);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .footer-fine-print {
+            color: rgba(255,255,255,0.1);
+            font-size: 8px;
+            line-height: 1.4;
+            max-width: 600px;
+            margin: 20px auto 0;
+        }
+
+        /* ===== МОДАЛЬНОЕ ОКНО — КРЕДИТ ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 30px;
+            padding: 50px 40px;
+            max-width: 550px;
+            width: 100%;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes modalIn {
+            0% { transform: scale(0.5) rotate(-5deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: #f5f5f5;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .modal-close:hover {
+            background: #e0e0e0;
+            transform: rotate(90deg);
+        }
+
+        .modal h2 {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .modal h2 .rate {
+            color: var(--green);
+        }
+
+        .modal .subtitle {
+            color: #999;
+            font-size: 13px;
+            margin-bottom: 30px;
+        }
+
+        /* ===== СЛАЙДЕРЫ ===== */
+        .slider-group {
+            margin-bottom: 30px;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .slider-label span {
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .slider-value {
+            font-weight: 900;
+            font-size: 20px;
+            color: var(--blue);
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: linear-gradient(90deg, var(--blue) 0%, var(--green) 100%);
+            border-radius: 10px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid var(--blue);
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: 0.2s;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        /* ===== РАСЧЁТ ===== */
+        .calc-result {
+            background: linear-gradient(135deg, #E3F2FD 0%, #E8F5E9 100%);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .calc-result .amount {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--dark);
+        }
+
+        .calc-result .label {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .calc-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed rgba(0,0,0,0.1);
+        }
+
+        .calc-row span {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .calc-row strong {
+            font-size: 14px;
+            color: var(--dark);
+        }
+
+        /* ===== ВЫБОР ТИПА КРЕДИТА ===== */
+        .credit-type-section {
+            display: none;
+        }
+
+        .credit-type-section.active {
+            display: block;
+        }
+
+        .credit-type-title {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .credit-type-btn {
+            display: block;
+            width: 100%;
+            padding: 22px;
+            border-radius: 16px;
+            border: 3px solid #eee;
+            background: white;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            transition: all 0.3s;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .credit-type-btn:hover {
+            border-color: var(--blue);
+            background: #f0f7ff;
+        }
+
+        .credit-type-btn.hedgehog {
+            border-color: var(--yellow);
+            background: linear-gradient(135deg, #FFF9C4 0%, #FFFDE7 100%);
+            animation: hedgehogPulse 0.8s ease-in-out infinite;
+            font-size: 20px;
+            position: relative;
+            overflow: visible;
+        }
+
+        @keyframes hedgehogPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255,214,0,0.4);
+                border-color: var(--yellow);
+            }
+            50% {
+                transform: scale(1.03);
+                box-shadow: 0 0 30px 10px rgba(255,214,0,0.3);
+                border-color: #FFB300;
+            }
+        }
+
+        /* Стрелочки */
+        .arrow-left, .arrow-right {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            animation: arrowBounce 0.5s ease-in-out infinite alternate;
+        }
+
+        .arrow-left {
+            left: -40px;
+        }
+
+        .arrow-right {
+            right: -40px;
+        }
+
+        @keyframes arrowBounce {
+            0% { transform: translateY(-50%) translateX(0); }
+            100% { transform: translateY(-50%) translateX(5px); }
+        }
+
+        .arrow-left {
+            animation: arrowBounceLeft 0.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes arrowBounceLeft {
+            0% { transform: translateY(-50%) translateX(0); }
+            100% { transform: translateY(-50%) translateX(-5px); }
+        }
+
+        /* Sparkle вокруг кнопки ежа */
+        .sparkle {
+            position: absolute;
+            font-size: 16px;
+            animation: sparkleFloat 1s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes sparkleFloat {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+
+        .sparkle:nth-child(2) { top: -10px; left: 10%; animation-delay: 0.2s; }
+        .sparkle:nth-child(3) { top: -10px; right: 10%; animation-delay: 0.4s; }
+        .sparkle:nth-child(4) { bottom: -10px; left: 20%; animation-delay: 0.6s; }
+        .sparkle:nth-child(5) { bottom: -10px; right: 20%; animation-delay: 0.8s; }
+        .sparkle:nth-child(6) { top: 50%; left: -15px; animation-delay: 0.3s; }
+        .sparkle:nth-child(7) { top: 50%; right: -15px; animation-delay: 0.7s; }
+
+        /* ===== LOADING МОДАЛКА ===== */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255,255,255,0.2);
+            border-top-color: var(--yellow);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* ===== ОШИБКА ===== */
+        .error-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .error-modal.active {
+            display: flex;
+        }
+
+        .error-box {
+            background: white;
+            border-radius: 24px;
+            padding: 50px 40px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+            20%, 40%, 60%, 80% { transform: translateX(8px); }
+        }
+
+        .error-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .error-box h3 {
+            font-size: 22px;
+            font-weight: 900;
+            color: #D32F2F;
+            margin-bottom: 10px;
+        }
+
+        .error-box p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+
+        .error-close-btn {
+            padding: 14px 40px;
+            background: #D32F2F;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .error-close-btn:hover {
+            background: #B71C1C;
+            transform: scale(1.05);
+        }
+
+        /* ===== ХАОС ОВЕРЛЕЙ ===== */
+        .chaos-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3000;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .chaos-overlay.active {
+            display: block;
+        }
+
+        .chaos-hedgehog {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            animation: chaosMove 0.5s linear infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes chaosMove {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(90deg) scale(1.5); }
+            50% { transform: rotate(180deg) scale(0.8); }
+            75% { transform: rotate(270deg) scale(1.3); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .chaos-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 0 0 20px rgba(0,0,0,0.5);
+            z-index: 3001;
+            text-align: center;
+            animation: chaosTextPulse 0.3s infinite alternate;
+            pointer-events: none;
+            display: none;
+        }
+
+        .chaos-text.active {
+            display: block;
+        }
+
+        @keyframes chaosTextPulse {
+            0% { transform: translate(-50%, -50%) scale(1) rotate(-5deg); color: #FFD600; }
+            100% { transform: translate(-50%, -50%) scale(1.2) rotate(5deg); color: #ff0000; }
+        }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 16px; }
+            .stat-number { font-size: 28px; }
+            .logo-text { font-size: 22px; }
+            header { padding: 15px 20px; }
+            .hero { padding: 50px 20px; }
+            .cards-section { padding: 50px 20px; }
+            .section-title { font-size: 26px; }
+            .cta-section h2 { font-size: 28px; }
+            .modal { padding: 40px 25px; }
+            .chaos-text { font-size: 36px; }
+        }
+
+        /* ===== Плавающие элементы на фоне ===== */
+        .floating-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .float-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.05;
+            animation: floatUp 15s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.05; }
+            90% { opacity: 0.05; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Шаг модалки */
+        .step { display: none; }
+        .step.active { display: block; }
+    </style>
+</head>
+<body>
+
+    <!-- Плавающие элементы -->
+    <div class="floating-bg" id="floatingBg"></div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo-container">
+            <span class="logo-icon">🦔</span>
+            <div class="logo-text">Еже<span>Кредит</span></div>
+        </div>
+        <div class="header-badge">⭐ Лучший 2024</div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Кредиты с <span class="highlight">Ежовой</span> выгодой!</h1>
+        <p>Самые иголистые ставки на рынке. Одобрение за 5 минут* 🦔</p>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-number">16%*</div>
+                <div class="stat-label">Годовая ставка</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">5 мин*</div>
+                <div class="stat-label">Одобрение</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">10M+*</div>
+                <div class="stat-label">Довольных ежей</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- КАРТОЧКИ -->
+    <section class="cards-section">
+        <h2 class="section-title">Почему <span>ЕжеКредит</span>? 🤔</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>Мгновенно*</h3>
+                <p>Получите решение по кредиту быстрее, чем ёж сворачивается в клубок. Наша система работает 24/7*!</p>
+                <span class="card-badge">Быстро*</span>
+            </div>
+            <div class="card">
+                <div class="card-icon">🛡️</div>
+                <h3>Безопасно*</h3>
+                <p>Ваши данные защищены иголками наших ежей. 256-битное шифрование* и армия колючих охранников!</p>
+                <span class="card-badge">Надёжно*</span>
+            </div>
+            <div class="card">
+                <div class="card-icon">💰</div>
+                <h3>Выгодно*</h3>
+                <p>Ставка от 16%* годовых — таких условий вы не найдёте* даже в лесу! Ежемесячные бонусы*!</p>
+                <span class="card-badge">Экономия*</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПРЕИМУЩЕСТВА -->
+    <section class="advantages">
+        <h2 class="section-title">Наши <span>преимущества</span> ✨</h2>
+        <div class="adv-grid">
+            <div class="adv-item">
+                <span class="adv-icon">📱</span>
+                <h4>Онлайн заявка*</h4>
+                <p>Оформите кредит не вставая с пенька</p>
+            </div>
+            <div class="adv-item">
+                <span class="adv-icon">🎁</span>
+                <h4>Бонусы*</h4>
+                <p>Кешбэк грибами и ягодами*</p>
+            </div>
+            <div class="adv-item">
+                <span class="adv-icon">📞</span>
+                <h4>Поддержка 24/7*</h4>
+                <p>Наши ежи всегда на связи</p>
+            </div>
+            <div class="adv-item">
+                <span class="adv-icon">🏆</span>
+                <h4>Награды*</h4>
+                <p>Лучший банк леса 2024*</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Готовы взять <span>ЕжеКредит</span>? 🦔</h2>
+        <p>Присоединяйтесь к миллионам довольных ежей*</p>
+        <button class="cta-button" onclick="openModal()">🦔 ВЗЯТЬ КРЕДИТ</button>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-text">© 2024 ЕжеКредит — Все права защищены иголками* 🦔</div>
+        <div class="footer-text">ЕжеКредит — Ваш колючий финансовый партнёр*</div>
+        <div class="footer-fine-print">
+            *В наших мечтах. *ежесекундно. Все ставки, цифры, обещания и ежи являются вымышленными. Любое совпадение с реальными ежами — случайность. ЕжеКредит не несёт ответственности ни за что, никогда, ни при каких обстоятельствах. Кешбэк грибами доступен только по чётным пятницам в високосный год. 10M+ довольных ежей подсчитаны приблизительно ±10M. Время одобрения 5 минут измерялось в ежовом времени (1 ежоминута = ∞ человеческих минут).
+        </div>
+    </footer>
+
+    <!-- ===== МОДАЛЬНОЕ ОКНО КРЕДИТА ===== -->
+    <div class="modal-overlay" id="creditModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+
+            <!-- ШАГ 1: Калькулятор -->
+            <div class="step active" id="step1">
+                <h2>Взять <span class="rate">САМЫЙ ВЫГОДНЫЙ</span> КРЕДИТ*</h2>
+                <div class="subtitle">Ставка — 16%* годовых | *ежесекундно</div>
+
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span>💰 Сумма кредита</span>
+                        <span class="slider-value" id="amountValue">100 000 ₽</span>
+                    </div>
+                    <input type="range" id="amountSlider" min="10000" max="1000000" step="5000" value="100000">
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span>📅 Срок (дней)</span>
+                        <span class="slider-value" id="daysValue">365</span>
+                    </div>
+                    <input type="range" id="daysSlider" min="30" max="1825" step="30" value="365">
+                </div>
+
+                <div class="calc-result">
+                    <div class="label">Вы вернёте всего*</div>
+                    <div class="amount" id="totalReturn">116 000 ₽</div>
+                    <div class="calc-row">
+                        <span>Переплата*</span>
+                        <strong id="overpayment">16 000 ₽</strong>
+                    </div>
+                    <div class="calc-row">
+                        <span>Ежедневный платёж*</span>
+                        <strong id="dailyPayment">317 ₽</strong>
+                    </div>
+                </div>
+
+                <button class="cta-button" style="width:100%; font-size:18px; padding:18px;" onclick="goToStep2()">
+                    Продолжить →
+                </button>
+            </div>
+
+            <!-- ШАГ 2: Выбор типа -->
+            <div class="step" id="step2">
+                <div class="credit-type-title">Выберите тип кредита 🎯</div>
+
+                <button class="credit-type-btn" onclick="selectNormal()">
+                    Обычный Кредит 💳
+                </button>
+
+                <button class="credit-type-btn hedgehog" onclick="selectHedgehog()">
+                    <span class="sparkle">✨</span>
+                    <span class="sparkle">⭐</span>
+                    <span class="sparkle">✨</span>
+                    <span class="sparkle">💫</span>
+                    <span class="sparkle">⭐</span>
+                    <span class="sparkle">✨</span>
+                    <span class="arrow-left">👉</span>
+                    <span class="arrow-right">👈</span>
+                    КРЕДИТ ДЛЯ ПОКУПКИ 🦔🦔🦔
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ЗАГРУЗКА -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader"></div>
+        <div class="loading-text" id="loadingText">Обработка заявки...</div>
+    </div>
+
+    <!-- ОШИБКА -->
+    <div class="error-modal" id="errorModal">
+        <div class="error-box">
+            <div class="error-icon">❌</div>
+            <h3>Ошибка обработки!</h3>
+            <p>К сожалению, произошла ошибка при обработке вашей заявки. Попробуйте другой тип кредита* 🦔</p>
+            <button class="error-close-btn" onclick="closeError()">Попробовать снова</button>
+        </div>
+    </div>
+
+    <!-- ХАОС -->
+    <div class="chaos-overlay" id="chaosOverlay"></div>
+    <div class="chaos-text" id="chaosText">🦔 КРЕДИТ ОДОБРЕН 🦔</div>
+
+    <!-- АУДИО -->
+    <audio id="chaosAudio" src="audio.mp3" preload="auto"></audio>
+
+    <script>
+        // ===== Плавающие кружки на фоне =====
+        const floatingBg = document.getElementById('floatingBg');
+        for (let i = 0; i < 15; i++) {
+            const circle = document.createElement('div');
+            circle.className = 'float-circle';
+            const size = Math.random() * 100 + 50;
+            const colors = ['#FFD600', '#00C853', '#2979FF'];
+            circle.style.width = size + 'px';
+            circle.style.height = size + 'px';
+            circle.style.left = Math.random() * 100 + '%';
+            circle.style.background = colors[Math.floor(Math.random() * 3)];
+            circle.style.animationDelay = Math.random() * 15 + 's';
+            circle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            floatingBg.appendChild(circle);
+        }
+
+        // ===== Модалка =====
+        function openModal() {
+            document.getElementById('creditModal').classList.add('active');
+            document.getElementById('step1').classList.add('active');
+            document.getElementById('step2').classList.remove('active');
+        }
+
+        function closeModal() {
+            document.getElementById('creditModal').classList.remove('active');
+        }
+
+        // ===== Слайдеры =====
+        const amountSlider = document.getElementById('amountSlider');
+        const daysSlider = document.getElementById('daysSlider');
+
+        function formatMoney(n) {
+            return n.toLocaleString('ru-RU') + ' ₽';
+        }
+
+        function recalc() {
+            const amount = parseInt(amountSlider.value);
+            const days = parseInt(daysSlider.value);
+
+            document.getElementById('amountValue').textContent = formatMoney(amount);
+            document.getElementById('daysValue').textContent = days;
+
+            const rate = 0.16;
+            const interest = amount * rate * (days / 365);
+            const total = amount + interest;
+            const daily = total / days;
+
+            document.getElementById('totalReturn').textContent = formatMoney(Math.round(total));
+            document.getElementById('overpayment').textContent = formatMoney(Math.round(interest));
+            document.getElementById('dailyPayment').textContent = formatMoney(Math.round(daily));
+        }
+
+        amountSlider.addEventListener('input', recalc);
+        daysSlider.addEventListener('input', recalc);
+        recalc();
+
+        // ===== Шаги =====
+        function goToStep2() {
+            document.getElementById('step1').classList.remove('active');
+            document.getElementById('step2').classList.add('active');
+        }
+
+        // ===== Обычный кредит (ошибка) =====
+        function selectNormal() {
+            closeModal();
+            const loading = document.getElementById('loadingOverlay');
+            const loadingText = document.getElementById('loadingText');
+            loading.classList.add('active');
+
+            const messages = [
+                'Обработка заявки...',
+                'Проверка данных...',
+                'Связываемся с ежами...',
+                'Считаем иголки...',
+                'Почти готово...'
+            ];
+
+            let i = 0;
+            const msgInterval = setInterval(() => {
+                i++;
+                if (i < messages.length) {
+                    loadingText.textContent = messages[i];
+                }
+            }, 800);
+
+            setTimeout(() => {
+                clearInterval(msgInterval);
+                loading.classList.remove('active');
+                document.getElementById('errorModal').classList.add('active');
+            }, 4000);
+        }
+
+        function closeError() {
+            document.getElementById('errorModal').classList.remove('active');
+            openModal();
+            // Сразу на шаг 2
+            document.getElementById('step1').classList.remove('active');
+            document.getElementById('step2').classList.add('active');
+        }
+
+        // ===== КРЕДИТ ДЛЯ ПОКУПКИ ЕЖЕЙ — ХАОС =====
+        function selectHedgehog() {
+            closeModal();
+
+            const audio = document.getElementById('chaosAudio');
+            audio.currentTime = 32;
+            audio.volume = 1;
+            audio.play().catch(e => console.log('Audio play blocked:', e));
+
+            document.body.classList.add('chaos-mode');
+
+            const overlay = document.getElementById('chaosOverlay');
+            overlay.classList.add('active');
+            overlay.innerHTML = '';
+
+            const hedgehogImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN_JQkDyEtuMZ_f25FMAHLq8kFH2LxwZLA0jiaPAnLrQ&s=10';
+
+            // Спавним ежей
+            function spawnHedgehog() {
+                const img = document.createElement('img');
+                img.src = hedgehogImg;
+                img.className = 'chaos-hedgehog';
+                img.style.left = Math.random() * (window.innerWidth - 150) + 'px';
+                img.style.top = Math.random() * (window.innerHeight - 150) + 'px';
+                img.style.animationDuration = (Math.random() * 0.5 + 0.2) + 's';
+
+                // Каждый ёж двигается рандомно
+                let x = parseFloat(img.style.left);
+                let y = parseFloat(img.style.top);
+                let dx = (Math.random() - 0.5) * 20;
+                let dy = (Math.random() - 0.5) * 20;
+
+                overlay.appendChild(img);
+
+                function moveHedgehog() {
+                    x += dx;
+                    y += dy;
+
+                    if (x < 0 || x > window.innerWidth - 150) dx *= -1;
+                    if (y < 0 || y > window.innerHeight - 150) dy *= -1;
+
+                    img.style.left = x + 'px';
+                    img.style.top = y + 'px';
+
+                    if (overlay.classList.contains('active')) {
+                        requestAnimationFrame(moveHedgehog);
+                    }
+                }
+                moveHedgehog();
+            }
+
+            // Спавним пачку ежей
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => spawnHedgehog(), i * 200);
+            }
+
+            // Ещё больше ежей каждую секунду
+            const spawnInterval = setInterval(() => {
+                if (overlay.classList.contains('active')) {
+                    for (let i = 0; i < 5; i++) {
+                        spawnHedgehog();
+                    }
+                } else {
+                    clearInterval(spawnInterval);
+                }
+            }, 1000);
+
+            // Текст КРЕДИТ ОДОБРЕН
+            setTimeout(() => {
+                document.getElementById('chaosText').classList.add('active');
+            }, 1000);
+
+            // Тряска страницы
+            let shakeInterval = setInterval(() => {
+                const rx = (Math.random() - 0.5) * 30;
+                const ry = (Math.random() - 0.5) * 30;
+                document.body.style.transform = `translate(${rx}px, ${ry}px)`;
+            }, 50);
+
+            // Через 30 секунд можно остановить (или пусть продолжается)
+            // Если хочешь чтобы не останавливалось — убери этот блок
+            /*
+            setTimeout(() => {
+                clearInterval(shakeInterval);
+                document.body.style.transform = '';
+                document.body.classList.remove('chaos-mode');
+                overlay.classList.remove('active');
+                document.getElementById('chaosText').classList.remove('active');
+                audio.pause();
+            }, 30000);
+            */
+        }
+    </script>
+
+</body>
+  </html>
