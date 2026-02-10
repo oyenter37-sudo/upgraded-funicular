@@ -29,7 +29,6 @@
             transition: all 0.3s;
         }
 
-        /* ===== ХАОС РЕЖИМ ===== */
         body.chaos-mode {
             animation: chaosBackground 0.3s infinite;
         }
@@ -59,7 +58,6 @@
             100% { transform: rotate(-10deg) scale(1.2); }
         }
 
-        /* ===== HEADER ===== */
         header {
             background: linear-gradient(135deg, var(--blue) 0%, #1565C0 100%);
             padding: 20px 40px;
@@ -114,7 +112,6 @@
             50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(255,214,0,0.5); }
         }
 
-        /* ===== HERO ===== */
         .hero {
             background: linear-gradient(135deg, #1565C0 0%, #0D47A1 50%, #002171 100%);
             padding: 80px 40px;
@@ -197,7 +194,6 @@
             margin-top: 5px;
         }
 
-        /* ===== КАРТОЧКИ ===== */
         .cards-section {
             padding: 80px 40px;
             max-width: 1200px;
@@ -281,7 +277,6 @@
         .card:nth-child(2) .card-badge { background: #C8E6C9; color: #2E7D32; }
         .card:nth-child(3) .card-badge { background: #BBDEFB; color: #1565C0; }
 
-        /* ===== ПРЕИМУЩЕСТВА ===== */
         .advantages {
             background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
             padding: 80px 40px;
@@ -317,7 +312,6 @@
             font-size: 14px;
         }
 
-        /* ===== КНОПКА ВЗЯТЬ КРЕДИТ ===== */
         .cta-section {
             padding: 80px 40px;
             text-align: center;
@@ -382,7 +376,6 @@
             50% { box-shadow: 0 10px 60px rgba(255,214,0,0.7); }
         }
 
-        /* ===== FOOTER ===== */
         footer {
             background: #0a0a15;
             padding: 40px;
@@ -403,7 +396,6 @@
             margin: 20px auto 0;
         }
 
-        /* ===== МОДАЛЬНОЕ ОКНО — КРЕДИТ ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -476,7 +468,6 @@
             margin-bottom: 30px;
         }
 
-        /* ===== СЛАЙДЕРЫ ===== */
         .slider-group {
             margin-bottom: 30px;
         }
@@ -526,7 +517,6 @@
             transform: scale(1.2);
         }
 
-        /* ===== РАСЧЁТ ===== */
         .calc-result {
             background: linear-gradient(135deg, #E3F2FD 0%, #E8F5E9 100%);
             border-radius: 16px;
@@ -564,7 +554,6 @@
             color: var(--dark);
         }
 
-        /* ===== ВЫБОР ТИПА КРЕДИТА ===== */
         .credit-type-section {
             display: none;
         }
@@ -623,7 +612,6 @@
             }
         }
 
-        /* Стрелочки */
         .arrow-left, .arrow-right {
             position: absolute;
             top: 50%;
@@ -634,6 +622,7 @@
 
         .arrow-left {
             left: -40px;
+            animation: arrowBounceLeft 0.5s ease-in-out infinite alternate;
         }
 
         .arrow-right {
@@ -645,16 +634,11 @@
             100% { transform: translateY(-50%) translateX(5px); }
         }
 
-        .arrow-left {
-            animation: arrowBounceLeft 0.5s ease-in-out infinite alternate;
-        }
-
         @keyframes arrowBounceLeft {
             0% { transform: translateY(-50%) translateX(0); }
             100% { transform: translateY(-50%) translateX(-5px); }
         }
 
-        /* Sparkle вокруг кнопки ежа */
         .sparkle {
             position: absolute;
             font-size: 16px;
@@ -674,7 +658,6 @@
         .sparkle:nth-child(6) { top: 50%; left: -15px; animation-delay: 0.3s; }
         .sparkle:nth-child(7) { top: 50%; right: -15px; animation-delay: 0.7s; }
 
-        /* ===== LOADING МОДАЛКА ===== */
         .loading-overlay {
             display: none;
             position: fixed;
@@ -713,7 +696,6 @@
             font-weight: 700;
         }
 
-        /* ===== ОШИБКА ===== */
         .error-modal {
             display: none;
             position: fixed;
@@ -784,7 +766,6 @@
             transform: scale(1.05);
         }
 
-        /* ===== ХАОС ОВЕРЛЕЙ ===== */
         .chaos-overlay {
             display: none;
             position: fixed;
@@ -843,7 +824,6 @@
             100% { transform: translate(-50%, -50%) scale(1.2) rotate(5deg); color: #ff0000; }
         }
 
-        /* ===== АДАПТИВ ===== */
         @media (max-width: 768px) {
             .hero h1 { font-size: 32px; }
             .hero p { font-size: 16px; }
@@ -858,7 +838,6 @@
             .chaos-text { font-size: 36px; }
         }
 
-        /* ===== Плавающие элементы на фоне ===== */
         .floating-bg {
             position: fixed;
             top: 0;
@@ -884,17 +863,14 @@
             100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
 
-        /* Шаг модалки */
         .step { display: none; }
         .step.active { display: block; }
     </style>
 </head>
 <body>
 
-    <!-- Плавающие элементы -->
     <div class="floating-bg" id="floatingBg"></div>
 
-    <!-- HEADER -->
     <header>
         <div class="logo-container">
             <span class="logo-icon">🦔</span>
@@ -903,7 +879,6 @@
         <div class="header-badge">⭐ Лучший 2024</div>
     </header>
 
-    <!-- HERO -->
     <section class="hero">
         <h1>Кредиты с <span class="highlight">Ежовой</span> выгодой!</h1>
         <p>Самые иголистые ставки на рынке. Одобрение за 5 минут* 🦔</p>
@@ -923,7 +898,6 @@
         </div>
     </section>
 
-    <!-- КАРТОЧКИ -->
     <section class="cards-section">
         <h2 class="section-title">Почему <span>ЕжеКредит</span>? 🤔</h2>
         <div class="cards-grid">
@@ -948,7 +922,6 @@
         </div>
     </section>
 
-    <!-- ПРЕИМУЩЕСТВА -->
     <section class="advantages">
         <h2 class="section-title">Наши <span>преимущества</span> ✨</h2>
         <div class="adv-grid">
@@ -975,14 +948,12 @@
         </div>
     </section>
 
-    <!-- CTA -->
     <section class="cta-section">
         <h2>Готовы взять <span>ЕжеКредит</span>? 🦔</h2>
         <p>Присоединяйтесь к миллионам довольных ежей*</p>
         <button class="cta-button" onclick="openModal()">🦔 ВЗЯТЬ КРЕДИТ</button>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer-text">© 2024 ЕжеКредит — Все права защищены иголками* 🦔</div>
         <div class="footer-text">ЕжеКредит — Ваш колючий финансовый партнёр*</div>
@@ -991,12 +962,10 @@
         </div>
     </footer>
 
-    <!-- ===== МОДАЛЬНОЕ ОКНО КРЕДИТА ===== -->
     <div class="modal-overlay" id="creditModal">
         <div class="modal">
             <button class="modal-close" onclick="closeModal()">✕</button>
 
-            <!-- ШАГ 1: Калькулятор -->
             <div class="step active" id="step1">
                 <h2>Взять <span class="rate">САМЫЙ ВЫГОДНЫЙ</span> КРЕДИТ*</h2>
                 <div class="subtitle">Ставка — 16%* годовых | *ежесекундно</div>
@@ -1035,7 +1004,6 @@
                 </button>
             </div>
 
-            <!-- ШАГ 2: Выбор типа -->
             <div class="step" id="step2">
                 <div class="credit-type-title">Выберите тип кредита 🎯</div>
 
@@ -1058,13 +1026,11 @@
         </div>
     </div>
 
-    <!-- ЗАГРУЗКА -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loader"></div>
         <div class="loading-text" id="loadingText">Обработка заявки...</div>
     </div>
 
-    <!-- ОШИБКА -->
     <div class="error-modal" id="errorModal">
         <div class="error-box">
             <div class="error-icon">❌</div>
@@ -1074,15 +1040,13 @@
         </div>
     </div>
 
-    <!-- ХАОС -->
     <div class="chaos-overlay" id="chaosOverlay"></div>
     <div class="chaos-text" id="chaosText">🦔 КРЕДИТ ОДОБРЕН 🦔</div>
 
-    <!-- АУДИО -->
     <audio id="chaosAudio" src="audio.mp3" preload="auto"></audio>
 
     <script>
-        // ===== Плавающие кружки на фоне =====
+        // Плавающие кружки
         const floatingBg = document.getElementById('floatingBg');
         for (let i = 0; i < 15; i++) {
             const circle = document.createElement('div');
@@ -1098,7 +1062,7 @@
             floatingBg.appendChild(circle);
         }
 
-        // ===== Модалка =====
+        // Модалка
         function openModal() {
             document.getElementById('creditModal').classList.add('active');
             document.getElementById('step1').classList.add('active');
@@ -1109,7 +1073,7 @@
             document.getElementById('creditModal').classList.remove('active');
         }
 
-        // ===== Слайдеры =====
+        // Слайдеры
         const amountSlider = document.getElementById('amountSlider');
         const daysSlider = document.getElementById('daysSlider');
 
@@ -1120,15 +1084,12 @@
         function recalc() {
             const amount = parseInt(amountSlider.value);
             const days = parseInt(daysSlider.value);
-
             document.getElementById('amountValue').textContent = formatMoney(amount);
             document.getElementById('daysValue').textContent = days;
-
             const rate = 0.16;
             const interest = amount * rate * (days / 365);
             const total = amount + interest;
             const daily = total / days;
-
             document.getElementById('totalReturn').textContent = formatMoney(Math.round(total));
             document.getElementById('overpayment').textContent = formatMoney(Math.round(interest));
             document.getElementById('dailyPayment').textContent = formatMoney(Math.round(daily));
@@ -1138,19 +1099,17 @@
         daysSlider.addEventListener('input', recalc);
         recalc();
 
-        // ===== Шаги =====
         function goToStep2() {
             document.getElementById('step1').classList.remove('active');
             document.getElementById('step2').classList.add('active');
         }
 
-        // ===== Обычный кредит (ошибка) =====
+        // Обычный кредит — ошибка
         function selectNormal() {
             closeModal();
             const loading = document.getElementById('loadingOverlay');
             const loadingText = document.getElementById('loadingText');
             loading.classList.add('active');
-
             const messages = [
                 'Обработка заявки...',
                 'Проверка данных...',
@@ -1158,7 +1117,6 @@
                 'Считаем иголки...',
                 'Почти готово...'
             ];
-
             let i = 0;
             const msgInterval = setInterval(() => {
                 i++;
@@ -1166,7 +1124,6 @@
                     loadingText.textContent = messages[i];
                 }
             }, 800);
-
             setTimeout(() => {
                 clearInterval(msgInterval);
                 loading.classList.remove('active');
@@ -1177,14 +1134,17 @@
         function closeError() {
             document.getElementById('errorModal').classList.remove('active');
             openModal();
-            // Сразу на шаг 2
             document.getElementById('step1').classList.remove('active');
             document.getElementById('step2').classList.add('active');
         }
 
-        // ===== КРЕДИТ ДЛЯ ПОКУПКИ ЕЖЕЙ — ХАОС =====
+        // === ХАОС — лимит ежей ===
+        const MAX_HEDGEHOGS = 20;
+        let hedgehogCount = 0;
+
         function selectHedgehog() {
             closeModal();
+            hedgehogCount = 0;
 
             const audio = document.getElementById('chaosAudio');
             audio.currentTime = 32;
@@ -1199,8 +1159,10 @@
 
             const hedgehogImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN_JQkDyEtuMZ_f25FMAHLq8kFH2LxwZLA0jiaPAnLrQ&s=10';
 
-            // Спавним ежей
             function spawnHedgehog() {
+                if (hedgehogCount >= MAX_HEDGEHOGS) return;
+                hedgehogCount++;
+
                 const img = document.createElement('img');
                 img.src = hedgehogImg;
                 img.className = 'chaos-hedgehog';
@@ -1208,7 +1170,6 @@
                 img.style.top = Math.random() * (window.innerHeight - 150) + 'px';
                 img.style.animationDuration = (Math.random() * 0.5 + 0.2) + 's';
 
-                // Каждый ёж двигается рандомно
                 let x = parseFloat(img.style.left);
                 let y = parseFloat(img.style.top);
                 let dx = (Math.random() - 0.5) * 20;
@@ -1219,13 +1180,10 @@
                 function moveHedgehog() {
                     x += dx;
                     y += dy;
-
                     if (x < 0 || x > window.innerWidth - 150) dx *= -1;
                     if (y < 0 || y > window.innerHeight - 150) dy *= -1;
-
                     img.style.left = x + 'px';
                     img.style.top = y + 'px';
-
                     if (overlay.classList.contains('active')) {
                         requestAnimationFrame(moveHedgehog);
                     }
@@ -1233,48 +1191,35 @@
                 moveHedgehog();
             }
 
-            // Спавним пачку ежей
-            for (let i = 0; i < 15; i++) {
-                setTimeout(() => spawnHedgehog(), i * 200);
+            // Начальный спавн — 5 ежей
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => spawnHedgehog(), i * 300);
             }
 
-            // Ещё больше ежей каждую секунду
+            // Каждую секунду добавляем по 2, пока не достигнем лимита
             const spawnInterval = setInterval(() => {
-                if (overlay.classList.contains('active')) {
-                    for (let i = 0; i < 5; i++) {
-                        spawnHedgehog();
-                    }
-                } else {
+                if (!overlay.classList.contains('active') || hedgehogCount >= MAX_HEDGEHOGS) {
                     clearInterval(spawnInterval);
+                    return;
+                }
+                for (let i = 0; i < 2; i++) {
+                    spawnHedgehog();
                 }
             }, 1000);
 
-            // Текст КРЕДИТ ОДОБРЕН
+            // Текст
             setTimeout(() => {
                 document.getElementById('chaosText').classList.add('active');
             }, 1000);
 
-            // Тряска страницы
-            let shakeInterval = setInterval(() => {
+            // Тряска
+            setInterval(() => {
                 const rx = (Math.random() - 0.5) * 30;
                 const ry = (Math.random() - 0.5) * 30;
                 document.body.style.transform = `translate(${rx}px, ${ry}px)`;
             }, 50);
-
-            // Через 30 секунд можно остановить (или пусть продолжается)
-            // Если хочешь чтобы не останавливалось — убери этот блок
-            /*
-            setTimeout(() => {
-                clearInterval(shakeInterval);
-                document.body.style.transform = '';
-                document.body.classList.remove('chaos-mode');
-                overlay.classList.remove('active');
-                document.getElementById('chaosText').classList.remove('active');
-                audio.pause();
-            }, 30000);
-            */
         }
     </script>
 
 </body>
-  </html>
+                </html>
